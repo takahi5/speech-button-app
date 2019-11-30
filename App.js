@@ -2,12 +2,14 @@ import * as React from "react";
 import {
   View,
   StyleSheet,
-  Button,
   SafeAreaView,
+  ScrollView,
   Dimensions
 } from "react-native";
 import Constants from "expo-constants";
-import SpeakButton from "./components/SpeakButton";
+import MenuButton from "./components/MenuButton";
+import NumberButton from "./components/NumberButton";
+import TextButton from "./components/TextButton";
 
 const { width, height } = Dimensions.get("window");
 
@@ -56,21 +58,24 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap"
   },
-  innerContainer: {
-    width: width - 20,
-    height: height - 100,
-    margin: 5,
+  itemContainer: {
+    marginHorizontal: 5,
     padding: 20,
     backgroundColor: "#f4fa58",
     flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap"
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center"
+  numberContainer: {
+    marginHorizontal: 5,
+    padding: 20,
+    backgroundColor: "#F2EFFB",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap"
+  },
+  extraContaner: {
+    margin: 10
   }
 });
 
@@ -80,12 +85,26 @@ export default App = () => {
     Speech.speak(thingToSay);
   };
 
-  const buttons = items.map((item, index) => (
-    <SpeakButton text={item.text} imageUrl={item.imageUrl} key={index} />
+  const menus = items.map((item, index) => (
+    <MenuButton text={item.text} imageUrl={item.imageUrl} key={index} />
   ));
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.innerContainer}>{buttons}</View>
+      <ScrollView>
+        <View style={styles.itemContainer}>{menus}</View>
+        <View style={styles.numberContainer}>
+          <NumberButton text="1" />
+          <NumberButton text="2" />
+          <NumberButton text="3" />
+          <NumberButton text="4" />
+          <NumberButton text="5" />
+          <NumberButton text="6" />
+        </View>
+        <View style={styles.extraContaner}>
+          <TextButton text="what do you want" />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
