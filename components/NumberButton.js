@@ -1,12 +1,11 @@
 import * as React from "react";
-import { Image, StyleSheet, TouchableOpacity, Text } from "react-native";
-import Constants from "expo-constants";
+import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import * as Speech from "expo-speech";
 
 const styles = StyleSheet.create({
   container: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     backgroundColor: "#4B088A",
     borderRadius: 10,
     alignItems: "center",
@@ -22,8 +21,7 @@ const styles = StyleSheet.create({
 
 export default NumberButton = ({ text }) => {
   speak = () => {
-    var thingToSay = text;
-    Speech.speak(thingToSay);
+    Speech.speak(text, { language: "en-US" });
   };
 
   return (

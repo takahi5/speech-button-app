@@ -22,8 +22,7 @@ const styles = StyleSheet.create({
 
 export default TextButton = ({ text }) => {
   speak = () => {
-    var thingToSay = text;
-    Speech.speak(thingToSay);
+    Speech.speak(text, { language: "en-US" });
   };
 
   return (
